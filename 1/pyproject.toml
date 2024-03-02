@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "cwcc"
+version = "1.0.0"
+description = "Nikhil's version of wc command of UNIX"
+authors = ["Nikhil Kumar <n0k030n@homeoffice.wal-mart.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+typer = "^0.9.0"
+pathlib = "^1.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

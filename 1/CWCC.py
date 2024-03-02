@@ -1,0 +1,62 @@
+import sys
+import typer
+from typing import List
+from pathlib import Path
+
+app = typer.Typer()
+
+class CWCC:
+    def __init__(self, filename) -> None:
+        self.filename = filename
+        self.num_lines = 0
+        self.num_words = 0
+        self.num_bytes = 0
+
+    def count(self):
+        try:
+            with open(self.filename,"rb") as f:
+                for l in f:
+                    self.num_lines += 1
+                    self.num_bytes += len(l)
+                    words = l.split()
+                    self.num_words += len(words)
+        except FileNotFoundError:
+            typer.echo("File not found")
+            raise typer.Abort()
+    
+    def __repr__(self) -> str:
+        return f"{self.num_lines} {self.num_words} {self.num_bytes} {self.filename}"
+    
+    def display_counts(self, lines: bool, words: bool, bytes: bool):
+        if not(lines or words or bytes):
+            lines = words = bytes = True
+        output = []
+        if lines:
+            output.append(str(self.num_lines))
+        if words:
+            output.append(str(self.num_words))
+        if bytes:
+            output.append(str(self.num_bytes))
+        output.append(self.filename)
+        typer.echo(" ".join(output))
+    
+@app.command()
+def count_lines_words_bytes(
+    filenames: List[str] = typer.Argument(..., help="List of files to count"),
+    lines: bool = typer.Option(False, "--lines", "-l", help="Print the newline counts"),
+    words: bool = typer.Option(False, "--words", "-w", help="Print the word counts"),
+    bytes: bool = typer.Option(False, "--bytes", "-c", help="Print the byte counts"),
+):
+    for filename in filenames:
+        counter = CWCC(filename)
+        counter.count()
+        counter.display_counts(lines=lines, words=words, bytes=bytes)
+
+if __name__=="__main__":
+    app()
+
+
+
+
+
+
