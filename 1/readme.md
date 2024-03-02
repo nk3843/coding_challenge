@@ -25,6 +25,7 @@ save the script in a new file and add shebang on top to tell the interpreter wha
 #!/usr/bin/env python
 
 run the following command in terminal
+
 chmod +x cwcc
 
 Next add path using following command
