@@ -8,7 +8,9 @@ Installation: Ensure you have Python installed on your system.
 
 Dependencies: The script uses the Typer library. If you haven't installed it yet, you can install it using pip:
 
+```
 pip3 install typer
+```
 
 Run the Script: Run the script with Python, passing the necessary arguments and options:
 python3 wc.py [OPTIONS] FILENAME...
@@ -22,12 +24,19 @@ Options
 
 You can use it as an executable command
 save the script in a new file and add shebang on top to tell the interpreter what to do
+
+```
 #!/usr/bin/env python
+```
 
 run the following command in terminal
 
+```
 chmod +x cwcc
+```
 
 Next add path using following command
 
+```
 export PATH=$PATH:.
+```

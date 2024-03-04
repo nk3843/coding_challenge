@@ -1,9 +1,8 @@
-import sys
 import typer
 from typing import List
-from pathlib import Path
 
 app = typer.Typer()
+
 
 class CWCC:
     def __init__(self, filename) -> None:
@@ -14,11 +13,11 @@ class CWCC:
 
     def count(self):
         try:
-            with open(self.filename,"rb") as f:
-                for l in f:
+            with open(self.filename, "rb") as f:
+                for lines in f:
                     self.num_lines += 1
-                    self.num_bytes += len(l)
-                    words = l.split()
+                    self.num_bytes += len(lines)
+                    words = lines.split()
                     self.num_words += len(words)
         except FileNotFoundError:
             typer.echo("File not found")
@@ -39,7 +38,8 @@ class CWCC:
             output.append(str(self.num_bytes))
         output.append(self.filename)
         typer.echo(" ".join(output))
-    
+
+
 @app.command()
 def count_lines_words_bytes(
     filenames: List[str] = typer.Argument(..., help="List of files to count"),
@@ -52,11 +52,6 @@ def count_lines_words_bytes(
         counter.count()
         counter.display_counts(lines=lines, words=words, bytes=bytes)
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     app()
-
-
-
-
-
-
