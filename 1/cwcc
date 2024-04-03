@@ -7,6 +7,7 @@ from pathlib import Path
 
 app = typer.Typer()
 
+
 class CWCC:
     def __init__(self, filename) -> None:
         self.filename = filename

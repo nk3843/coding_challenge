@@ -2,7 +2,7 @@
 name = "cwcc"
 version = "1.0.0"
 description = "Nikhil's version of wc command of UNIX"
-authors = ["Nikhil Kumar <n0k030n@homeoffice.wal-mart.com>"]
+authors = ["Nikhil Kumar <nikhil.viky@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
